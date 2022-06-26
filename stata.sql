@@ -1,0 +1,69 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `stata`
+--
+-- Создание: Июн 26 2022 г., 14:24
+-- Последнее обновление: Июн 26 2022 г., 15:04
+--
+
+DROP TABLE IF EXISTS `stata`;
+CREATE TABLE `stata` (
+  `id` int(10) UNSIGNED NOT NULL COMMENT 'Id',
+  `session_data` text NOT NULL COMMENT 'Данные сессии',
+  `dt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Таймштамп',
+  `MMDB_ADDR` varchar(15) DEFAULT NULL COMMENT 'MMDB_ADDR',
+  `GEOIP_ADDR` varchar(15) DEFAULT NULL COMMENT 'GEOIP_ADDR',
+  `GEOIP_COUNTRY_CODE` tinytext COMMENT 'GEOIP_COUNTRY_CODE',
+  `GEOIP_COUNTRY_NAME` tinytext COMMENT 'GEOIP_COUNTRY_NAME',
+  `GEOIP_REGION` tinytext COMMENT 'GEOIP_REGION',
+  `GEOIP_CITY` text COMMENT 'GEOIP_CITY',
+  `GEOIP_LONGITUDE` tinytext COMMENT 'GEOIP_LONGITUDE',
+  `GEOIP_LATITUDE` tinytext COMMENT 'GEOIP_LATITUDE',
+  `GEOIP_POSTAL_CODE` varchar(6) DEFAULT NULL COMMENT 'GEOIP_POSTAL_CODE',
+  `HTTP_X_SERVER_ADDR` varchar(15) DEFAULT NULL COMMENT 'HTTP_X_SERVER_ADDR',
+  `HTTP_X_REAL_IP` varchar(15) DEFAULT NULL COMMENT 'HTTP_X_REAL_IP',
+  `HTTP_USER_AGENT` text COMMENT 'HTTP_USER_AGENT',
+  `resume_clicked` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'resume_clicked',
+  `clicked_dt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Таймштамп клика',
+  `fuckyouiamcat` datetime DEFAULT NULL,
+  `git_clicked` datetime DEFAULT NULL COMMENT 'Перешли на Git'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Индексы сохранённых таблиц
+--
+
+--
+-- Индексы таблицы `stata`
+--
+ALTER TABLE `stata`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `dt` (`dt`),
+  ADD KEY `resume_clicked` (`resume_clicked`),
+  ADD KEY `GEOIP_ADDR` (`GEOIP_ADDR`);
+
+--
+-- AUTO_INCREMENT для сохранённых таблиц
+--
+
+--
+-- AUTO_INCREMENT для таблицы `stata`
+--
+ALTER TABLE `stata`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Id';
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
